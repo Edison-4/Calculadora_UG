@@ -118,7 +118,9 @@ h3 {
 }
 
 label {
-    font-size: 0.95rem;
+    font-family: 'TimesNewNormal', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
 }
 
 input[type="number"] {
