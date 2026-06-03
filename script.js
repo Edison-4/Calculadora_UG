@@ -37,5 +37,5 @@ function calcularNotas() {
     document.getElementById('prom1').innerText = prom1.toFixed(2);
     document.getElementById('prom2').innerText = prom2.toFixed(2);
     document.getElementById('prom-semestre').innerText = promSemestre.toFixed(2);
-    document.getElementById('nota-recuperacion').innerText = recuperacion > 0 ? recuperacion.toFixed(2) : "recuperacion";
+    document.getElementById('nota-recuperacion').innerText = recuperacion;
 }
