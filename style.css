@@ -140,9 +140,18 @@ input[type="number"]:focus {
 .result-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
     font-weight: bold;
     font-size: 1.1rem;
+}
+
+.result-row span:first-child,
+.summary-item span:first-child {
+    font-family: 'TimesNewNormal', serif;
+    font-size: 1.3rem;
+    font-weight: normal;
+    letter-spacing: 0.5px;
 }
 
 .summary-grid {
