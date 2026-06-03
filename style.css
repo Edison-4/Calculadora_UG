@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Blackrush';
+    src: url('Blackrush.ttf') format('truetype');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -71,18 +76,24 @@ body {
 }
 
 h2 {
+    font-family: 'Blackrush', sans-serif;
     text-align: center;
     margin-bottom: 30px;
     color: #ffffff;
-    font-size: 1.8rem;
-    letter-spacing: 1px;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    font-weight: normal;
 }
 
 h3 {
+    font-family: 'Blackrush', sans-serif;
     margin-bottom: 15px;
     color: #4da6ff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 8px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 1px;
 }
 
 .grid-layout {
@@ -152,12 +163,13 @@ input[type="number"]:focus {
 .highlight-warning { font-size: 1.5rem; font-weight: bold; }
 
 .watermark {
+    font-family: 'Blackrush', sans-serif;
     position: absolute;
     bottom: 15px;
     right: 20px;
     color: rgba(255, 255, 255, 0.2);
-    font-size: 0.85rem;
-    font-weight: 300;
+    font-size: 1.2rem;
+    font-weight: normal;
     letter-spacing: 1px;
     pointer-events: none;
     user-select: none;
