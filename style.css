@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'PeachClub';
-    src: url('Peach Club Script TTF.ttf') format('truetype');
+    font-family: 'TimesNewNormal';
+    src: url('Times New Normal Regular.ttf') format('truetype');
 }
 
 * {
@@ -76,22 +76,22 @@ body {
 }
 
 h2 {
-    font-family: 'PeachClub', cursive;
+    font-family: 'TimesNewNormal', serif;
     text-align: center;
     margin-bottom: 30px;
     color: #ffffff;
-    font-size: 3rem;
+    font-size: 2.2rem;
     letter-spacing: 1px;
     font-weight: normal;
 }
 
 h3 {
-    font-family: 'PeachClub', cursive;
+    font-family: 'TimesNewNormal', serif;
     margin-bottom: 15px;
     color: #4da6ff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 8px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: normal;
     letter-spacing: 1px;
 }
@@ -163,12 +163,12 @@ input[type="number"]:focus {
 .highlight-warning { font-size: 1.5rem; font-weight: bold; }
 
 .watermark {
-    font-family: 'PeachClub', cursive;
+    font-family: 'TimesNewNormal', serif;
     position: absolute;
     bottom: 15px;
     right: 20px;
     color: rgba(255, 255, 255, 0.2);
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: normal;
     letter-spacing: 1px;
     pointer-events: none;
