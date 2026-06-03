@@ -18,8 +18,8 @@ function calcularNotas() {
     let ex2 = parseFloat(document.getElementById('ex2').value) || 0;
 
     // Calcular promedios de los parciales (Ajusta la fórmula si es promedio en lugar de suma)
-    let prom1 = gf1 + gp1 + ex1; 
-    let prom2 = gf2 + gp2 + ex2;
+    let prom1 = gf1*0.33 + gp1*0.33 + ex1*0.34; 
+    let prom2 = gf2*0.33 + gp2*0.33 + ex2*0.34;
 
     // Calcular semestre (Suma de ambos parciales, asumiendo que se aprueba con 14 sobre 20)
     let promSemestre = prom1 + prom2;
