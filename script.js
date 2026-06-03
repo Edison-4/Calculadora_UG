@@ -22,7 +22,7 @@ inputs.forEach(input => {
 });
 
 function calcularNotas() {
-    // Leer valores como texto para saber exactamente si la casilla está vacía
+    // Leer valores como texto
     let v_gf1 = document.getElementById('gf1').value;
     let v_gp1 = document.getElementById('gp1').value;
     let v_ex1 = document.getElementById('ex1').value;
@@ -31,7 +31,7 @@ function calcularNotas() {
     let v_gp2 = document.getElementById('gp2').value;
     let v_ex2 = document.getElementById('ex2').value;
 
-    // Convertir a números para hacer las matemáticas (si está vacío, asume 0 para la suma)
+    // Convertir a números
     let gf1 = parseFloat(v_gf1) || 0;
     let gp1 = parseFloat(v_gp1) || 0;
     let ex1 = parseFloat(v_ex1) || 0;
@@ -44,15 +44,15 @@ function calcularNotas() {
     let prom1 = (gf1 * 0.33) + (gp1 * 0.33) + (ex1 * 0.34); 
     let prom2 = (gf2 * 0.33) + (gp2 * 0.33) + (ex2 * 0.34);
 
+    // Los promedios parciales sí se pueden mostrar inmediatamente (si hay al menos un dato en su parcial)
+    document.getElementById('prom1').innerText = (v_gf1 !== "" || v_gp1 !== "" || v_ex1 !== "") ? prom1.toFixed(2) : "0.00";
+    document.getElementById('prom2').innerText = (v_gf2 !== "" || v_gp2 !== "" || v_ex2 !== "") ? prom2.toFixed(2) : "0.00";
+
     // FÓRMULA 2: Promedio semestre
     let promSemestre = (prom1 + prom2) / 2;
 
-    // Actualizar la interfaz de los promedios con 2 decimales
-    document.getElementById('prom1').innerText = prom1.toFixed(2);
-    document.getElementById('prom2').innerText = prom2.toFixed(2);
-    document.getElementById('prom-semestre').innerText = promSemestre.toFixed(2);
-    
-    // LÓGICA DE RECUPERACIÓN (Manejo de Estados)
+    // Elementos del DOM para los resultados finales
+    const promSemestreElement = document.getElementById('prom-semestre');
     const recupElement = document.getElementById('nota-recuperacion');
     
     // Verificar los estados de los casilleros
@@ -60,17 +60,26 @@ function calcularNotas() {
     let todasLlenas = (v_gf1 !== "" && v_gp1 !== "" && v_ex1 !== "" && v_gf2 !== "" && v_gp2 !== "" && v_ex2 !== "");
 
     if (todasVacias) {
-        // ESTADO 1: El usuario acaba de entrar a la página y no ha escrito nada
+        // ESTADO 1: Todo vacío
+        promSemestreElement.innerText = "---";
+        promSemestreElement.style.color = "#888888";
+        
         recupElement.innerText = "Ingrese sus notas";
-        recupElement.style.color = "#888888"; // Gris
+        recupElement.style.color = "#888888";
         
     } else if (!todasLlenas) {
-        // ESTADO 2: El usuario empezó a escribir, pero dejó alguna casilla en blanco
+        // ESTADO 2: Incompleto
+        promSemestreElement.innerText = "En espera...";
+        promSemestreElement.style.color = "#888888";
+        
         recupElement.innerText = "Faltan notas por ingresar";
-        recupElement.style.color = "#888888"; // Gris
+        recupElement.style.color = "#888888";
         
     } else {
-        // ESTADO 3: Las 6 casillas tienen números. ¡A calcular la verdad!
+        // ESTADO 3: Todo lleno. Mostrar Promedio Semestre y Calcular Recuperación
+        promSemestreElement.innerText = promSemestre.toFixed(2);
+        promSemestreElement.style.color = "#4caf50"; // Verde para resaltar
+        
         let recuperacion = 0;
 
         if (promSemestre < 7 && promSemestre >= 3) {
@@ -79,20 +88,19 @@ function calcularNotas() {
 
         if (promSemestre >= 7) {
             recupElement.innerText = "Aprobado";
-            recupElement.style.color = "#4caf50"; // Verde
+            recupElement.style.color = "#4caf50"; 
         } else if (promSemestre < 3) {
             recupElement.innerText = "Reprobado (Prom. < 3)";
-            recupElement.style.color = "#f44336"; // Rojo
+            recupElement.style.color = "#f44336"; 
         } else if (recuperacion > 10) {
             recupElement.innerText = "Reprobado (Req. > 10)";
-            recupElement.style.color = "#f44336"; // Rojo
+            recupElement.style.color = "#f44336"; 
         } else {
             recupElement.innerText = recuperacion.toFixed(2);
-            recupElement.style.color = "#ff9800"; // Naranja
+            recupElement.style.color = "#ff9800"; 
         }
     }
 }
 
-// Ejecutamos la función una vez apenas carga el script para que el mensaje inicial 
-// sea "Ingrese sus notas" en lugar del "0.00" que está por defecto en el HTML.
+// Ejecutar al inicio para aplicar el estado vacío
 calcularNotas();
