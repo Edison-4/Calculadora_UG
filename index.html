@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="animated-background"></div>
+
+    <div class="music-controls">
+        <button id="music-btn" class="btn-music">🎵 Reproducir Música</button>
+        <audio id="bg-music" loop>
+            <source src="musica.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <div class="calculator-container">
         <h2>Calculadora de Notas UG</h2>
         
@@ -57,14 +66,18 @@
             <div class="summary-grid">
                 <div class="summary-item">
                     <span>Promedio Semestre</span>
-                    <span id="prom-semestre" class="highlight-total">0.00</span>
+                    <span id="prom-semestre" class="highlight-total">---</span>
                 </div>
                 <div class="summary-item">
                     <span>Nota Mínima Recuperación</span>
-                    <span id="nota-recuperacion" class="highlight-warning">0.00</span>
+                    <span id="nota-recuperacion" class="highlight-warning">Ingrese sus notas</span>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="watermark">
+        Desarrollado por Edison Plaza & Gemini
     </div>
 
     <script src="script.js"></script>
