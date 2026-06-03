@@ -63,7 +63,12 @@ function calcularNotas() {
         
     } else {
         promSemestreElement.innerText = promSemestre.toFixed(2);
-        promSemestreElement.style.color = "#4caf50";
+        
+        if (promSemestre >= 7) {
+            promSemestreElement.style.color = "#4caf50";
+        } else {
+            promSemestreElement.style.color = "#f44336";
+        }
         
         let recuperacion = 0;
 
