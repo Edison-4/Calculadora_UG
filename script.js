@@ -22,7 +22,7 @@ function calcularNotas() {
     let prom2 = gf2*0.33 + gp2*0.33 + ex2*0.34;
 
     // Calcular semestre (Suma de ambos parciales, asumiendo que se aprueba con 14 sobre 20)
-    let promSemestre = prom1 + prom2;
+    let promSemestre = (prom1 + prom2)/2;
 
     // Calcular nota mínima de recuperación
     // En tu Excel mencionas 11.666. Ajusta esta fórmula según la ley de la facultad.
