@@ -44,7 +44,7 @@ function calcularNotas() {
     let prom1 = (gf1 * 0.33) + (gp1 * 0.33) + (ex1 * 0.34); 
     let prom2 = (gf2 * 0.33) + (gp2 * 0.33) + (ex2 * 0.34);
 
-    // Los promedios parciales sí se pueden mostrar inmediatamente (si hay al menos un dato en su parcial)
+    // Actualizar parciales de inmediato si hay datos
     document.getElementById('prom1').innerText = (v_gf1 !== "" || v_gp1 !== "" || v_ex1 !== "") ? prom1.toFixed(2) : "0.00";
     document.getElementById('prom2').innerText = (v_gf2 !== "" || v_gp2 !== "" || v_ex2 !== "") ? prom2.toFixed(2) : "0.00";
 
@@ -78,7 +78,7 @@ function calcularNotas() {
     } else {
         // ESTADO 3: Todo lleno. Mostrar Promedio Semestre y Calcular Recuperación
         promSemestreElement.innerText = promSemestre.toFixed(2);
-        promSemestreElement.style.color = "#4caf50"; // Verde para resaltar
+        promSemestreElement.style.color = "#4caf50"; // Verde
         
         let recuperacion = 0;
 
@@ -104,3 +104,48 @@ function calcularNotas() {
 
 // Ejecutar al inicio para aplicar el estado vacío
 calcularNotas();
+
+// --- LÓGICA DE LA MÚSICA ---
+const musicBtn = document.getElementById('music-btn');
+const bgMusic = document.getElementById('bg-music');
+let isPlaying = false;
+let primeraInteraccion = false;
+
+// Ajustar volumen al 30%
+bgMusic.volume = 0.3; 
+
+// Evento 1: Reproducir música al hacer clic en CUALQUIER parte de la página
+document.body.addEventListener('click', (event) => {
+    // Verificamos que sea el primer clic y que NO hayan hecho clic justo en el botón
+    if (!primeraInteraccion && event.target.id !== 'music-btn') {
+        bgMusic.play().then(() => {
+            isPlaying = true;
+            primeraInteraccion = true;
+            
+            // Actualizamos la apariencia del botón automáticamente
+            musicBtn.innerText = "⏸️ Pausar Música";
+            musicBtn.style.backgroundColor = "#4da6ff";
+            musicBtn.style.color = "#000";
+        }).catch(error => {
+            console.log("El navegador requiere interacción previa.", error);
+        });
+    }
+});
+
+// Evento 2: Mantener la funcionalidad del botón
+musicBtn.addEventListener('click', () => {
+    primeraInteraccion = true; 
+    
+    if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.innerText = "🎵 Reproducir Música";
+        musicBtn.style.backgroundColor = "rgba(30, 30, 30, 0.7)";
+        musicBtn.style.color = "#4da6ff";
+    } else {
+        bgMusic.play();
+        musicBtn.innerText = "⏸️ Pausar Música";
+        musicBtn.style.backgroundColor = "#4da6ff";
+        musicBtn.style.color = "#000";
+    }
+    isPlaying = !isPlaying;
+});
