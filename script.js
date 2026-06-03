@@ -30,7 +30,7 @@ function calcularNotas() {
     let recuperacion = 0;
     if (promSemestre < 14 && promSemestre > 0) {
         // Coloca aquí la fórmula exacta que usa el sistema de tu universidad
-        recuperacion = (14 - promSemestre); // Placeholder simple
+        recuperacion = (7-(0.4*promSemestre))/0.6; // Placeholder simple
     }
 
     // Actualizar la interfaz (el DOM)
