@@ -43,8 +43,8 @@ function calcularNotas() {
     let recuperacion = 0;
     const recupElement = document.getElementById('nota-recuperacion');
 
-    // Evaluamos si el promedio del semestre es menor a 7 (asumiendo que 7 es la nota de aprobación)
-    if (promSemestre < 7 && promSemestre > 0) {
+    // Evaluamos si el promedio del semestre es menor a 7
+    if (promSemestre < 7 && promSemestre >= 3) {
         recuperacion = (7 - (0.4 * promSemestre)) / 0.6;
     }
 
@@ -53,10 +53,13 @@ function calcularNotas() {
     document.getElementById('prom2').innerText = prom2.toFixed(2);
     document.getElementById('prom-semestre').innerText = promSemestre.toFixed(2);
     
-    // Lógica visual para la nota de recuperación
+    // Lógica visual para la nota de recuperación (Incluye la nueva regla del 3)
     if (promSemestre >= 7) {
         recupElement.innerText = "Aprobado";
         recupElement.style.color = "#4caf50"; // Verde
+    } else if (promSemestre > 0 && promSemestre < 3) {
+        recupElement.innerText = "Reprobado (Prom. < 3)";
+        recupElement.style.color = "#f44336"; // Rojo (No alcanza el mínimo para recuperación)
     } else if (recuperacion > 10) {
         recupElement.innerText = "Reprobado (Req. > 10)";
         recupElement.style.color = "#f44336"; // Rojo (Matemáticamente imposible de alcanzar)
@@ -65,6 +68,6 @@ function calcularNotas() {
         recupElement.style.color = "#ff9800"; // Naranja
     } else {
         recupElement.innerText = "0.00";
-        recupElement.style.color = "#ff9800";
+        recupElement.style.color = "#ff9800"; // Naranja
     }
 }
