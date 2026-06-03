@@ -1,4 +1,3 @@
-/* Reseteo general para eliminar márgenes por defecto del navegador */
 * {
     margin: 0;
     padding: 0;
@@ -6,10 +5,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Configuración del cuerpo y alineación central */
 body {
     color: #e0e0e0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -18,7 +17,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Animación del fondo oscuro (Gradiente en movimiento) */
 .animated-background {
     position: fixed;
     top: 0;
@@ -37,7 +35,6 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Posicionamiento del botón de música */
 .music-controls {
     position: absolute;
     top: 20px;
@@ -62,7 +59,6 @@ body {
     color: #000;
 }
 
-/* Efecto visual de cristal oscuro para el contenedor principal */
 .calculator-container {
     background-color: rgba(30, 30, 30, 0.85);
     backdrop-filter: blur(10px);
@@ -89,7 +85,6 @@ h3 {
     padding-bottom: 8px;
 }
 
-/* Estructura de cuadrícula para alinear los parciales lado a lado */
 .grid-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -115,7 +110,6 @@ label {
     font-size: 0.95rem;
 }
 
-/* Estilos de las cajas numéricas */
 input[type="number"] {
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid #333;
@@ -153,12 +147,10 @@ input[type="number"]:focus {
     gap: 10px;
 }
 
-/* Colores de estado para los promedios */
 .highlight { color: #4da6ff; }
 .highlight-total { font-size: 1.5rem; font-weight: bold; }
 .highlight-warning { font-size: 1.5rem; font-weight: bold; }
 
-/* Estilos para la marca de agua */
 .watermark {
     position: absolute;
     bottom: 15px;
@@ -171,7 +163,6 @@ input[type="number"]:focus {
     user-select: none;
 }
 
-/* RESPONSIVIDAD: Ajustes para pantallas móviles (ancho menor a 600px) */
 @media (max-width: 600px) {
     .calculator-container {
         padding: 15px;
@@ -180,11 +171,11 @@ input[type="number"]:focus {
     .music-controls {
         top: 10px;
         right: 50%;
-        transform: translateX(50%); /* Centrar el botón arriba */
+        transform: translateX(50%);
         width: max-content;
     }
     .grid-layout {
-        grid-template-columns: 1fr; /* Cambiar de dos columnas a una */
+        grid-template-columns: 1fr;
     }
     .input-group {
         flex-direction: column;
@@ -192,7 +183,7 @@ input[type="number"]:focus {
         gap: 8px;
     }
     input[type="number"] {
-        width: 100%; /* Las cajas de texto ocupan todo el ancho */
+        width: 100%;
     }
     .summary-grid {
         flex-direction: column;
